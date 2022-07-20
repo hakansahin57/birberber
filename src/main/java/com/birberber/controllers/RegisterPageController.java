@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LoginPageController {
+public class RegisterPageController {
 
-    private static final Logger LOG = Logger.getLogger(LoginPageController.class);
+    private static final Logger LOG = Logger.getLogger(RegisterPageController.class);
 
     @GetMapping
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/register")
     public String getHomePage(Model model) {
-        return BirBerberConstants.BIRBERBER_LOGIN_PAGE;
+        return BirBerberConstants.BIRBERBER_REGISTER_PAGE;
     }
 }

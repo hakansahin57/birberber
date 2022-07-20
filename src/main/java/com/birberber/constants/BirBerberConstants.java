@@ -5,6 +5,8 @@ public final class BirBerberConstants {
     //    Pages
     public static final String BIRBERBER_HOME_PAGE = "home";
     public static final String BIRBERBER_LOGIN_PAGE = "login";
+    public static final String BIRBERBER_REGISTER_PAGE = "register";
+
 
     //    Languages
     public static final String TURKISH_LANGUAGE_ISOCODE = "tr_TR";
