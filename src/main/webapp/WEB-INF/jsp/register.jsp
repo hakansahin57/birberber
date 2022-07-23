@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,14 +29,15 @@
                     <div class="page-links">
                         <a href="/login">Login</a><a href="/register" class="active">Register</a>
                     </div>
-                    <form>
-                        <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                    <form:form action="/register" method="post" modelAttribute="registerForm">
+                        <input class="form-control" type="text" name="firstName" placeholder="First Name" required>
+                        <input class="form-control" type="text" name="lastName" placeholder="Last Name" required>
                         <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
                         <input class="form-control" type="password" name="password" placeholder="Password" required>
                         <div class="form-button">
                             <button id="submit" type="submit" class="ibtn">Register</button>
                         </div>
-                    </form>
+                    </form:form>
                     <div class="other-links">
                         <span>Or register with</span><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>

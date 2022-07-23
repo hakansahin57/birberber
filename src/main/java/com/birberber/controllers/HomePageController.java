@@ -14,7 +14,7 @@ public class HomePageController {
     private static final Logger LOG = Logger.getLogger(HomePageController.class);
 
     @GetMapping
-    public String login(Model model) {
+    public String getHomePage(Model model) {
         return BirBerberConstants.BIRBERBER_HOME_PAGE;
     }
 

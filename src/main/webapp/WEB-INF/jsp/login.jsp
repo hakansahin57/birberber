@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,13 +28,13 @@
                         <div class="page-links">
                             <a href="/login" class="active">Login</a><a href="/register">Register</a>
                         </div>
-                        <form>
+                        <form:form action="/login" method="post" modelAttribute="loginForm">
                             <input class="form-control" type="text" name="username" placeholder="E-mail Address" required>
                             <input class="form-control" type="password" name="password" placeholder="Password" required>
                             <div class="form-button">
                                 <button id="submit" type="submit" class="ibtn">Login</button>
                             </div>
-                        </form>
+                        </form:form>
                         <div class="other-links">
                             <span>Or login with</span><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
