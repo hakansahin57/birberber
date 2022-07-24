@@ -3,7 +3,7 @@ package com.birberber.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -21,6 +21,9 @@ public class User {
 
     @Column(name = "lastName", nullable = false, length = 20)
     private String lastName;
+
+    @Column(name = "role", nullable = false, length = 20)
+    private String role;
 
 
     public Long getId() {
@@ -61,5 +64,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

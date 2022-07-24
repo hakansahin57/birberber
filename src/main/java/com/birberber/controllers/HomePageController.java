@@ -18,4 +18,9 @@ public class HomePageController {
         return BirBerberConstants.BIRBERBER_HOME_PAGE;
     }
 
+    @GetMapping("/home")
+    public String getHomePages(Model model) {
+        return BirBerberConstants.BIRBERBER_HOME_PAGE;
+    }
+
 }

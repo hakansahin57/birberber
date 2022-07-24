@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/ui/style/iofrm-theme14.css">
 </head>
 <body>
+<c:url value="/login" var="loginUrl" />
     <div class="form-body" class="container-fluid">
         <div class="row">
             <div class="form-holder">
@@ -22,13 +24,15 @@
                                     <img class="logo-size" src="images/logo-light.svg" alt="">
                                 </div>
                             </a>
+                            aaaaaaaaaa ${pageContext.request.remoteUser}
                         </div>
                         <h3>Get more things done with Loggin platform.</h3>
                         <p>Access to the most powerfull tool in the entire design and web industry.</p>
+
                         <div class="page-links">
-                            <a href="/login" class="active">Login</a><a href="/register">Register</a>
+                            <a href="${loginUrl}" class="active">Login</a><a href="/register">Register</a>
                         </div>
-                        <form:form action="/login" method="post" modelAttribute="loginForm">
+                        <form:form action="${loginUrl}" method="post" modelAttribute="loginForm">
                             <input class="form-control" type="text" name="username" placeholder="E-mail Address" required>
                             <input class="form-control" type="password" name="password" placeholder="Password" required>
                             <div class="form-button">
