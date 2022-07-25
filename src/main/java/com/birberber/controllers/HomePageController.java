@@ -15,6 +15,7 @@ public class HomePageController {
 
     @GetMapping
     public String getHomePage(Model model) {
+        System.out.println("sudenur");
         return BirBerberConstants.BIRBERBER_HOME_PAGE;
     }
 
