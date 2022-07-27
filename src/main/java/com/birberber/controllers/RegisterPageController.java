@@ -21,7 +21,12 @@ public class RegisterPageController {
 
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
-        model.addAttribute(new RegisterForm());
+        RegisterForm registerForm = new RegisterForm();
+//        registerForm.setFirstName("Hakan");
+//        registerForm.setLastName("Sahin");
+//        registerForm.setEmail("hakan@sahin.com");
+//        registerForm.setPassword("1");
+        model.addAttribute(registerForm);
         return BirBerberConstants.BIRBERBER_REGISTER_PAGE;
     }
 

@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ucuzunerde" />
         <module name="birberber" />
+        <module name="springboot2-webapp-jsp" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="birberber" options="-parameters" />
+      <module name="springboot2-webapp-jsp" options="-parameters" />
       <module name="ucuzunerde" options="-parameters" />
     </option>
   </component>

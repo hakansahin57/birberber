@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,8 @@
     <link rel="stylesheet" type="text/css" href="/ui/style/iofrm-theme14.css">
 </head>
 <body>
+<c:url value="/register" var="registerUrl" />
+<c:url value="/login" var="loginUrl" />
 <div class="form-body" class="container-fluid">
     <div class="row">
         <div class="form-holder">
@@ -27,13 +30,13 @@
                     <h3>Get more things done with Loggin platform.</h3>
                     <p>Access to the most powerfull tool in the entire design and web industry.</p>
                     <div class="page-links">
-                        <a href="/login">Login</a><a href="/register" class="active">Register</a>
+                        <a href="${loginUrl}">Login</a><a href="${registerUrl}" class="active">Register</a>
                     </div>
-                    <form:form action="/register" method="post" modelAttribute="registerForm">
-                        <input class="form-control" type="text" name="firstName" placeholder="First Name" required>
-                        <input class="form-control" type="text" name="lastName" placeholder="Last Name" required>
-                        <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    <form:form action="${registerUrl}" method="post" modelAttribute="registerForm">
+                        <input class="form-control" type="text" name="firstName" placeholder="First Name" value="${registerForm.firstName}" required>
+                        <input class="form-control" type="text" name="lastName" placeholder="Last Name" value="${registerForm.lastName}" required>
+                        <input class="form-control" type="email" name="email" placeholder="E-mail Address" value="${registerForm.email}" required>
+                        <input class="form-control" type="password" name="password" placeholder="Password" value="${registerForm.password}" required>
                         <div class="form-button">
                             <button id="submit" type="submit" class="ibtn">Register</button>
                         </div>

@@ -8,6 +8,7 @@ import com.birberber.security.BirBerberUserDetails;
 import com.birberber.services.user.BirBerberUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -38,6 +39,8 @@ public class DefaultBirBerberUserService implements BirBerberUserService {
         user.setFirstName(registerForm.getFirstName());
         user.setLastName(registerForm.getLastName());
         user.setEmail(registerForm.getEmail());
-        user.setPassword(registerForm.getPassword());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(passwordEncoder.encode(registerForm.getPassword()));
+        user.setRole("USER");
     }
 }
