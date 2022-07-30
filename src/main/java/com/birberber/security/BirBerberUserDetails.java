@@ -1,7 +1,7 @@
 package com.birberber.security;
 
 
-import com.birberber.domain.User;
+import com.birberber.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

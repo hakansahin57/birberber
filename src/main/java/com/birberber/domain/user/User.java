@@ -1,14 +1,12 @@
-package com.birberber.domain;
+package com.birberber.domain.user;
+
+import com.birberber.domain.item.Item;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends Item {
 
     @Column(nullable = false, unique = true, length = 45)
     private String email;
@@ -16,23 +14,11 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(name = "firstName", nullable = false, length = 20)
-    private String firstName;
-
     @Column(name = "lastName", nullable = false, length = 20)
     private String lastName;
 
     @Column(name = "role", nullable = false, length = 20)
     private String role;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -48,14 +34,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {

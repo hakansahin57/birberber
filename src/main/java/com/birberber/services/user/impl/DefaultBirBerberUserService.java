@@ -1,7 +1,7 @@
 package com.birberber.services.user.impl;
 
 
-import com.birberber.domain.User;
+import com.birberber.domain.user.User;
 import com.birberber.forms.RegisterForm;
 import com.birberber.repositories.UserRepository;
 import com.birberber.security.BirBerberUserDetails;
@@ -32,11 +32,11 @@ public class DefaultBirBerberUserService implements BirBerberUserService {
     public void register(RegisterForm registerForm) {
         User user = new User();
         setUserFields(user, registerForm);
-        userRepo.save(user);
+         userRepo.save(user);
     }
 
     private void setUserFields(User user, RegisterForm registerForm) {
-        user.setFirstName(registerForm.getFirstName());
+        user.setName(registerForm.getFirstName());
         user.setLastName(registerForm.getLastName());
         user.setEmail(registerForm.getEmail());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
