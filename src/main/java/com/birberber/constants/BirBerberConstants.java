@@ -6,6 +6,9 @@ public final class BirBerberConstants {
     public static final String BIRBERBER_HOME_PAGE = "home";
     public static final String BIRBERBER_LOGIN_PAGE = "login";
     public static final String BIRBERBER_REGISTER_PAGE = "register";
+    public static final String BIRBERBER_APPOINTMENTS_PAGE = "appointments";
+    public static final String BIRBERBER_STORES_PAGE = "stores";
+
 
 
     //    Languages

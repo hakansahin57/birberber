@@ -24,7 +24,9 @@
                                     <img class="logo-size" src="images/logo-light.svg" alt="">
                                 </div>
                             </a>
-                            aaaaaaaaaa ${pageContext.request.remoteUser}
+                            aaaaaaaaaa ${pageContext.request.remoteUser} <br>
+                            bbbbbbbbbb ${errorMsg} <br>
+                            cccccccccc ${msg} <br>
                         </div>
                         <h3>Get more things done with Loggin platform.</h3>
                         <p>Access to the most powerfull tool in the entire design and web industry.</p>

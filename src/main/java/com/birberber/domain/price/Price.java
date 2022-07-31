@@ -14,7 +14,7 @@ public class Price extends Item {
     private double value;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "currency_id")
     private Currency currency;
 
     public double getValue() {

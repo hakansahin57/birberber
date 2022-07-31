@@ -413,7 +413,7 @@ aaaaaaaaaa ${pageContext.request.remoteUser}
                     <p class="text-primary">Profession</p>
                     <span class="fs-5">Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</span>
                 </div>
-            </div>      
+            </div>
         </div>
     </div>
     <!-- Testimonial End -->

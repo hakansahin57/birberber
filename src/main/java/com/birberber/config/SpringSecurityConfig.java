@@ -1,5 +1,6 @@
 package com.birberber.config;
 
+import com.birberber.handlers.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,12 +12,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.annotation.Resource;
+
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+//    @Resource
+//    private LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     AuthenticationProvider authenticationProvider() {
@@ -30,10 +36,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/ui/**","/login", "/register")
+                .antMatchers("/","/ui/**","/login", "/register")
                 .permitAll()
-                .antMatchers("/")
-                .hasAnyAuthority("USER")
                 .anyRequest()
                 .authenticated()
                 .and()

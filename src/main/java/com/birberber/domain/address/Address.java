@@ -14,19 +14,19 @@ public class Address extends Item {
     private Store store;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "city_id")
     private City city;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "district_id")
     private District district;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "neighborhood_id")
     private Neighborhood neighborhood;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "street_id")
     private Street street;
 
     private String line1;
