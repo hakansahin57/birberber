@@ -1,6 +1,6 @@
 package com.birberber.controllers;
 
-import com.birberber.constants.BirBerberConstants;
+import com.birberber.constants.Constants;
 import com.birberber.forms.LoginForm;
 import org.apache.log4j.Logger;
 import org.springframework.security.core.Authentication;
@@ -23,7 +23,7 @@ public class LoginPageController {
         model.addAttribute(new LoginForm());
         if (error != null) model.addAttribute("errorMsg", "Your username and password are invalid.");
         if (logout != null) model.addAttribute("msg", "You have been logged out successfully.");
-        return BirBerberConstants.BIRBERBER_LOGIN_PAGE;
+        return Constants.LOGIN_PAGE;
     }
 
     @GetMapping(value = "/logout")

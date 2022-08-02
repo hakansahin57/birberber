@@ -1,6 +1,6 @@
 package com.birberber.controllers;
 
-import com.birberber.constants.BirBerberConstants;
+import com.birberber.constants.Constants;
 import com.birberber.forms.RegisterForm;
 import com.birberber.services.user.BirBerberUserService;
 import org.apache.log4j.Logger;
@@ -22,12 +22,8 @@ public class RegisterPageController {
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
         RegisterForm registerForm = new RegisterForm();
-//        registerForm.setFirstName("Hakan");
-//        registerForm.setLastName("Sahin");
-//        registerForm.setEmail("hakan@sahin.com");
-//        registerForm.setPassword("1");
         model.addAttribute(registerForm);
-        return BirBerberConstants.BIRBERBER_REGISTER_PAGE;
+        return Constants.REGISTER_PAGE;
     }
 
     @PostMapping("/register")
