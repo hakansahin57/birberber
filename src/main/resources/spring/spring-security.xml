@@ -9,10 +9,10 @@
                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.birberber.controllers"/>
-
+    <context:annotation-config />
     <http>
-        <!--        <intercept-url  pattern="/admin/**" access="hasRole('ADMIN')" />-->
-        <!--        <intercept-url  pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />-->
+                <intercept-url  pattern="/admin/**" access="hasRole('ADMIN')" />
+                <intercept-url  pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />
         <form-login
                 login-page="/login"
                 login-processing-url="/login"
@@ -33,4 +33,3 @@
         </authentication-provider>
     </authentication-manager>
 </beans:beans>
-

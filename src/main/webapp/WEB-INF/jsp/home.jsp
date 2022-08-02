@@ -1,9 +1,15 @@
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags/" %>
 <!DOCTYPE html>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags/" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="login" tagdir="/WEB-INF/tags/modal/login" %>
+
+
 <html lang="en">
 
 <head>
-    <title>HairCut - Hair Salon HTML Template</title>
+    <title><spring:message code="text.homepage.title"/></title>
     <tags:meta/>
     <tags:links/>
 </head>
@@ -12,7 +18,7 @@
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only"><spring:message code="text.loading"/></span>
         </div>
     </div>
     <!-- Spinner End -->
@@ -20,76 +26,29 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="home.jsp" class="navbar-brand ms-4 ms-lg-0">
-            <h1 class="mb-0 text-primary text-uppercase"><i class="fa fa-cut me-3"></i>HairCut</h1>
+        <a href="/" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="mb-0 text-primary"><i class="fa fa-cut me-3"></i>birberber</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="home" class="nav-item nav-link active">Home</a>
-<%--                <a href="about.jsp" class="nav-item nav-link">About</a>--%>
-<%--                <a href="service.jsp" class="nav-item nav-link">Service</a>--%>
-<%--                <div class="nav-item dropdown">--%>
-<%--                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>--%>
-<%--                    <div class="dropdown-menu m-0">--%>
-<%--                        <a href="price.jsp" class="dropdown-item">Pricing Plan</a>--%>
-<%--                        <a href="team.jsp" class="dropdown-item">Our Barber</a>--%>
-<%--                        <a href="open.jsp" class="dropdown-item">Working Hours</a>--%>
-<%--                        <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>--%>
-<%--                        <a href="404.jsp" class="dropdown-item">404 Page</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <a href="contact.jsp" class="nav-item nav-link">Contact</a>--%>
-<%--&lt;%&ndash;                <a href="/" class="nav-item nav-link">Login</a>&ndash;%&gt;--%>
+                <a href="/" class="nav-item nav-link active">Home</a>
             </div>
-            <a href="/login" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
-            <a href="/logout" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
+            <c:choose>
+                <c:when test="${empty pageContext.request.remoteUser}">
+                    <a href="/login" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Log In<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="/register" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Register<i class="fa fa-arrow-right ms-3"></i></a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/logout" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
+                </c:otherwise>
+            </c:choose>
+
         </div>
     </nav>
     <!-- Navbar End -->
-aaaaaaaaaa ${pageContext.request.remoteUser}
-
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="/ui/img/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center justify-content-center text-start">
-                        <div class="mx-sm-5 px-5" style="max-width: 900px;">
-                            <h1 class="display-2 text-white text-uppercase mb-4 animated slideInDown">We Will Keep You An Awesome Look</h1>
-                            <h4 class="text-white text-uppercase mb-4 animated slideInDown"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</h4>
-                            <h4 class="text-white text-uppercase mb-4 animated slideInDown"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="/ui/img/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex align-items-center justify-content-center text-start">
-                        <div class="mx-sm-5 px-5" style="max-width: 900px;">
-                            <h1 class="display-2 text-white text-uppercase mb-4 animated slideInDown">Luxury Haircut at Affordable Price</h1>
-                            <h4 class="text-white text-uppercase mb-4 animated slideInDown"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</h4>
-                            <h4 class="text-white text-uppercase mb-4 animated slideInDown"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-    <!-- Carousel End -->
-
 
     <!-- About Start -->
     <div class="container-xxl py-5">
@@ -481,6 +440,7 @@ aaaaaaaaaa ${pageContext.request.remoteUser}
             </div>
         </div>
     </div>
+    <login:login/>
     <!-- Footer End -->
 
 

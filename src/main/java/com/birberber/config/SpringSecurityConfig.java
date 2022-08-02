@@ -21,8 +21,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-//    @Resource
-//    private LoginSuccessHandler loginSuccessHandler;
+    @Resource
+    private LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     AuthenticationProvider authenticationProvider() {
@@ -43,10 +43,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginProcessingUrl("/login")
                 .loginPage("/login")
-                .defaultSuccessUrl("/",true) //login olunca anasayfaya
-                .and()
-                .httpBasic();
-
+                .successHandler(loginSuccessHandler);
     }
 }
 

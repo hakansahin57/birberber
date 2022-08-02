@@ -32,7 +32,7 @@ public class DefaultBirBerberUserService implements BirBerberUserService {
     public void register(RegisterForm registerForm) {
         User user = new User();
         setUserFields(user, registerForm);
-         userRepo.save(user);
+        userRepo.save(user);
     }
 
     private void setUserFields(User user, RegisterForm registerForm) {
