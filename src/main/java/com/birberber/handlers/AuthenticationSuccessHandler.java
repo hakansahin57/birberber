@@ -1,7 +1,5 @@
 package com.birberber.handlers;
 
-import com.birberber.domain.user.User;
-import com.birberber.security.BirBerberUserDetails;
 import com.birberber.services.session.SessionService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -15,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component("loginSuccessHandler")
-public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+@Component("authenticationSuccessHandler")
+public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Resource
     private SessionService sessionService;

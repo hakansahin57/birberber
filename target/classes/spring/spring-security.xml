@@ -1,35 +1,76 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<beans:beans xmlns="http://www.springframework.org/schema/security"-->
-<!--             xmlns:beans="http://www.springframework.org/schema/beans"-->
-<!--             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-<!--             xmlns:context="http://www.springframework.org/schema/context"-->
-<!--             xmlns:security="http://www.springframework.org/schema/security"-->
-<!--             xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd-->
-<!--                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd-->
-<!--                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">-->
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    <context:component-scan base-package="com.birberber.controllers"/>-->
-<!--    <context:annotation-config />-->
-<!--    <http>-->
-<!--                <intercept-url  pattern="/admin/**" access="hasRole('ADMIN')" />-->
-<!--                <intercept-url  pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />-->
-<!--        <form-login-->
-<!--                login-page="/login"-->
-<!--                login-processing-url="/login"-->
-<!--                username-parameter="username"-->
-<!--                password-parameter="password"-->
-<!--                authentication-success-handler-ref="loginSuccessHandler"-->
-<!--                default-target-url="/"/>-->
-<!--        <logout-->
-<!--                logout-url="/logout"-->
-<!--                logout-success-url="/"/>-->
-<!--        <access-denied-handler error-page="/error"/>-->
-<!--    </http>-->
-<!--    <authentication-manager>-->
-<!--        <authentication-provider>-->
-<!--            <user-service>-->
-<!--                <user name="admin" password="nimda" authorities="ROLE_USER"/>-->
-<!--            </user-service>-->
-<!--        </authentication-provider>-->
-<!--    </authentication-manager>-->
-<!--</beans:beans>-->
+    <http auto-config="false" use-expressions="true">
+        <intercept-url pattern="/" access="permitAll()"/>
+        <intercept-url pattern="/register" access="permitAll()"/>
+
+        <form-login
+                login-page="/login"
+                login-processing-url="/login"
+                username-parameter="username"
+                password-parameter="password"
+                authentication-success-handler-ref="authenticationSuccessHandler"
+                default-target-url="/"/>
+        <logout
+                logout-url="/logout"
+                logout-success-url="/"/>
+        <access-denied-handler error-page="/error"/>
+
+    </http>
+
+    <beans:bean id="authenticationSuccessHandler" class="com.birberber.handlers.AuthenticationSuccessHandler"/>
+    <beans:bean id="userDetailsService" class="com.birberber.services.user.impl.DefaultBirBerberUserService"/>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder ref="bCryptPasswordEncoder"/>
+        </authentication-provider>
+        <!-- <authentication-provider>
+            <user-service>
+                <user name="user1" password="user1Pass" authorities="ROLE_USER" />
+                <user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
+            </user-service>
+        </authentication-provider> -->
+    </authentication-manager>
+
+    <!-- For hashing and salting user passwords -->
+    <beans:bean id="bCryptPasswordEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <!--        <logout success-handler-ref="myLogoutSuccessHandler"-->
+    <!--                invalidate-session="true" delete-cookies="JSESSIONID" />-->
+
+    <!--        <remember-me key="uniqueAndSecret" token-validity-seconds="86400" />-->
+
+    <!--        <session-management session-fixation-protection="migrateSession"-->
+    <!--                            session-authentication-error-url="/auth/loginfailed.html">-->
+    <!--            <concurrency-control max-sessions="1"-->
+    <!--                                 error-if-maximum-exceeded="true"-->
+    <!--                                 expired-url="/auth/login.html"-->
+    <!--                                 session-registry-alias="sessionRegistry"/>-->
+    <!--        </session-management>-->
+
+    <!--    <beans:bean id="myLogoutSuccessHandler"-->
+    <!--                class="com.asn.handler.AsnLogoutSuccessHandler" />-->
+
+    <!--        <access-denied-handler error-page="/auth/accessDenied.html"/>-->
+
+    <!--        <form-login login-page='/auth/login.html'-->
+    <!--                    default-target-url="/"-->
+    <!--                    authentication-success-handler-ref="authenticationSuccessHandler"-->
+    <!--                    authentication-failure-url="/auth/loginfailed.html" />-->
+
+    <!--        <intercept-url pattern="/auth/login.html" access="permitAll" />-->
+    <!--        <intercept-url pattern="/auth/logout.html" access="permitAll" />-->
+    <!--        <intercept-url pattern="/auth/accessDenied.html" access="permitAll" />-->
+    <!--        <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')" />-->
+    <!--        <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />-->
+
+</beans:beans>
