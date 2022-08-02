@@ -2,10 +2,13 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xmlns:context="http://www.springframework.org/schema/context"
              xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <beans:bean id="authenticationSuccessHandler" class="com.birberber.handlers.AuthenticationSuccessHandler"/>
+    <beans:bean id="userDetailsService" class="com.birberber.services.user.impl.DefaultBirBerberUserService"/>
+    <beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
     <http auto-config="false" use-expressions="true">
         <intercept-url pattern="/" access="permitAll()"/>
@@ -25,8 +28,6 @@
 
     </http>
 
-    <beans:bean id="authenticationSuccessHandler" class="com.birberber.handlers.AuthenticationSuccessHandler"/>
-    <beans:bean id="userDetailsService" class="com.birberber.services.user.impl.DefaultBirBerberUserService"/>
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsService">
@@ -41,8 +42,7 @@
     </authentication-manager>
 
     <!-- For hashing and salting user passwords -->
-    <beans:bean id="bCryptPasswordEncoder"
-                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
 
     <!--        <logout success-handler-ref="myLogoutSuccessHandler"-->
     <!--                invalidate-session="true" delete-cookies="JSESSIONID" />-->
@@ -72,5 +72,6 @@
     <!--        <intercept-url pattern="/auth/accessDenied.html" access="permitAll" />-->
     <!--        <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')" />-->
     <!--        <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />-->
+
 
 </beans:beans>
