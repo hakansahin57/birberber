@@ -440,7 +440,6 @@
             </div>
         </div>
     </div>
-    <login:login/>
     <!-- Footer End -->
 
 
