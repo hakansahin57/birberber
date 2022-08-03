@@ -1,6 +1,7 @@
 package com.birberber.controllers;
 
 import com.birberber.constants.Constants;
+import com.birberber.domain.user.User;
 import com.birberber.services.session.SessionService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,8 @@ public class HomePageController {
 
     @GetMapping
     public String getHomePage(Model model, HttpServletRequest request) {
-//        User user = sessionService.getSessionUser(request);
-//        model.addAttribute("userName", user.getName());
+        User user = sessionService.getSessionUser(request);
+        model.addAttribute("user", user);
         return Constants.HOME_PAGE;
     }
 }

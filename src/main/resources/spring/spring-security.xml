@@ -12,6 +12,7 @@
     <http auto-config="false" use-expressions="true">
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/register" access="permitAll()"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 
         <form-login
                 login-page="/login"
@@ -30,12 +31,6 @@
         <authentication-provider user-service-ref="userDetailsService">
             <password-encoder ref="bCryptPasswordEncoder"/>
         </authentication-provider>
-        <!-- <authentication-provider>
-            <user-service>
-                <user name="user1" password="user1Pass" authorities="ROLE_USER" />
-                <user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
-            </user-service>
-        </authentication-provider> -->
     </authentication-manager>
 
     <!-- For hashing and salting user passwords -->

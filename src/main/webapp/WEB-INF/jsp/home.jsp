@@ -42,6 +42,9 @@
                     <a href="/register" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Register<i class="fa fa-arrow-right ms-3"></i></a>
                 </c:when>
                 <c:otherwise>
+                    <c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+                        <a href="/admin" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Admin<i class="fa fa-arrow-right ms-3"></i></a>
+                    </c:if>
                     <a href="/logout" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
                 </c:otherwise>
             </c:choose>

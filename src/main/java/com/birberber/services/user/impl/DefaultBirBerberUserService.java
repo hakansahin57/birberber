@@ -41,6 +41,6 @@ public class DefaultBirBerberUserService implements BirBerberUserService {
         user.setEmail(registerForm.getEmail());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(registerForm.getPassword()));
-        user.setRole("USER");
+        user.setRole("ROLE_USER");
     }
 }
