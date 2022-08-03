@@ -41,9 +41,6 @@
                             <button id="submit" type="submit" class="ibtn">Register</button>
                         </div>
                     </form:form>
-                    <div class="other-links">
-                        <span>Or register with</span><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-google"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
