@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
 <head>
@@ -435,7 +436,7 @@
                                 <li>
                                     <a href="/admin/import" class="mm-active">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                        IMPORT
+                                        DATA IMPORT
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">UI Components</li>

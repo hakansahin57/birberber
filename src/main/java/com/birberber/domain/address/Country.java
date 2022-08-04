@@ -9,6 +9,15 @@ import java.util.List;
 @Entity
 public class Country extends Item {
 
+    public Country() {
+        super();
+    }
+
+    public Country(String countryCode, String name) {
+        super(name);
+        this.countryCode = countryCode;
+    }
+
     @OneToMany(mappedBy = "country")
     private List<City> cities;
 
