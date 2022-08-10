@@ -1,9 +1,8 @@
 package com.birberber.services.imports.impl;
 
-import com.birberber.domain.address.Country;
 import com.birberber.services.imports.ExcelImportService;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -11,60 +10,80 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Component("excelImportService")
 public class DefaultExcelImportService implements ExcelImportService {
 
-    public List<Country> excelImport(MultipartFile file) {
-        List<Country> countryList = new ArrayList<>();
-        String sname = "";
-        String scountryCode = "";
+    private static final Logger LOG = Logger.getLogger(DefaultExcelImportService.class);
 
-
-        long start = System.currentTimeMillis();
-
+    public <T> List<T> excelImport(MultipartFile file) {
         FileInputStream inputStream;
         try {
             inputStream = (FileInputStream) file.getInputStream();
             Workbook workbook = new XSSFWorkbook(inputStream);
-            Sheet firstSheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = firstSheet.iterator();
-            rowIterator.next();
+            Sheet sheet = workbook.getSheetAt(0);
+            Class<?> clazz = findTableDomain(sheet);
+            List<Object> objectList = setValuesToInstance(sheet, clazz);
+            workbook.close();
+            return (List<T>) objectList;
 
-            while (rowIterator.hasNext()) {
-                Row nextRow = rowIterator.next();
-                Iterator<Cell> cellIterator = nextRow.cellIterator();
-                while (cellIterator.hasNext()) {
-                    Cell nextCell = cellIterator.next();
-                    int columnIndex = nextCell.getColumnIndex();
-                    switch (columnIndex) {
-                        case 0:
-                            scountryCode = String.valueOf(nextCell.getNumericCellValue());
-                            System.out.println(scountryCode);
-                            break;
-                        case 1:
-                            sname = nextCell.getStringCellValue();
-                            System.out.println(sname);
-                            break;
-                    }
-                    countryList.add(new Country(scountryCode, sname));
+        } catch (IOException |
+                 ClassNotFoundException |
+                 InvocationTargetException |
+                 NoSuchMethodException |
+                 InstantiationException |
+                 IllegalAccessException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    private List<Object> setValuesToInstance(Sheet sheet, Class<?> clazz) throws ClassNotFoundException,
+            InvocationTargetException,
+            NoSuchMethodException,
+            InstantiationException,
+            IllegalAccessException {
+
+        List<Object> objectList = new ArrayList<>();
+        // row 0 - column 0 is always name of the table
+        // row 1 is for setter names, ex : setName
+        // thats why starts from row 2
+        for (int i = 2; i <= sheet.getLastRowNum(); i++) {
+            Object obj = createInstance(clazz);
+            for (int y = 0; y < sheet.getRow(i).getPhysicalNumberOfCells(); y++) {
+                try {
+                    BeanUtils.setProperty(obj, sheet.getRow(1).getCell(y).getStringCellValue(), sheet.getRow(i).getCell(y));
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
                 }
             }
-
-            workbook.close();
-            long end = System.currentTimeMillis();
-            System.out.printf("Import done in %d ms\n", (end - start));
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
+            objectList.add(obj);
         }
+        return objectList;
+    }
 
-        return countryList;
+    private Class<?> findTableDomain(Sheet sheet) throws ClassNotFoundException,
+            InvocationTargetException,
+            NoSuchMethodException,
+            InstantiationException,
+            IllegalAccessException {
+
+        // row 0 - column 0 is always name of the table
+        String tableName = sheet.getRow(0).getCell(0).getStringCellValue();
+        //  finds class type, ex : Country.class
+        return Class.forName(tableName);
+    }
+
+    private Object createInstance(Class<?> clazz) throws NoSuchMethodException,
+            InvocationTargetException,
+            InstantiationException,
+            IllegalAccessException {
+        //  creates object for class
+        return clazz.getDeclaredConstructor().newInstance();
     }
 
 }

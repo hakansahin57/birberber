@@ -41,7 +41,6 @@ public class AdminPageController {
     public String importFile(ImportForm importForm) {
         List<Country> countryList = excelImportService.excelImport(importForm.getFile());
         countryRepository.saveAll(countryList);
-        System.out.println("sssssssssssssssss");
         return Constants.ADMIN_DATA_IMPEX;
     }
 

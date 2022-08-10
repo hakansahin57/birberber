@@ -6,5 +6,5 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface ExcelImportService {
-    List<Country> excelImport(MultipartFile file);
+    <T> List<T> excelImport(MultipartFile file);
 }
