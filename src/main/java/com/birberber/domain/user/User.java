@@ -3,6 +3,7 @@ package com.birberber.domain.user;
 import com.birberber.domain.item.Item;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
@@ -14,11 +15,16 @@ public class User extends Item {
     @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(name = "lastName", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String lastName;
 
-    @Column(name = "role", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String role;
+
+    @Column(length = 13)
+    private String phoneNumber;
+
+    private Date birthDate;
 
     public String getEmail() {
         return email;
@@ -50,5 +56,21 @@ public class User extends Item {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 }

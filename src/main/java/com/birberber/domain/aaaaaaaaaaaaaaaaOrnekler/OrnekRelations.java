@@ -1,4 +1,4 @@
-package com.birberber.domain.aaaaaaaaaaaaaaaa;
+package com.birberber.domain.aaaaaaaaaaaaaaaaOrnekler;
 
 public class OrnekRelations {
 

@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 import javax.servlet.http.HttpServletRequest;
 
 public interface SessionService {
-    User getSessionUser(HttpServletRequest request);
+    User getCurrentUser(HttpServletRequest request);
 
     void setSessionUser(HttpServletRequest request, Authentication authentication);
 

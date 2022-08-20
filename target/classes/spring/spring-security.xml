@@ -9,10 +9,21 @@
     <beans:bean id="userDetailsService" class="com.birberber.services.user.impl.DefaultBirBerberUserService"/>
     <beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
+<!--    &lt;!&ndash; deprecated type - will be changed to de.hybris.platform.converters.impl.DefaultModifableConfigurablePopulator in 6.2 &ndash;&gt;-->
+<!--    <beans:bean  id="repositoryService" class="com.birberber.services.imports.impl.DefaultRepositoryService">-->
+<!--        <beans:property name="repository">-->
+<!--            <beans:map key-type="java.lang.String">-->
+<!--                <beans:entry key="Country" value-ref="countryRepository"/>-->
+<!--            </beans:map>-->
+<!--        </beans:property>-->
+<!--    </beans:bean>-->
+
     <http auto-config="false" use-expressions="true">
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/register" access="permitAll()"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/my-account/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+
 
         <form-login
                 login-page="/login"

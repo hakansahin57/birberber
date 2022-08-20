@@ -23,7 +23,7 @@ public class HomePageController {
 
     @GetMapping
     public String getHomePage(Model model, HttpServletRequest request) {
-        User user = sessionService.getSessionUser(request);
+        User user = sessionService.getCurrentUser(request);
         model.addAttribute("user", user);
         return Constants.HOME_PAGE;
     }

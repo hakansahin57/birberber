@@ -3,7 +3,7 @@ package com.birberber.forms;
 public class LoginForm {
 
     String email;
-    String phone;
+    String phoneNumber;
     String password;
 
     public String getEmail() {
@@ -14,12 +14,12 @@ public class LoginForm {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DefaultSessionService implements SessionService {
 
     @Override
-    public User getSessionUser(HttpServletRequest request) {
+    public User getCurrentUser(HttpServletRequest request) {
         return (User) request.getSession().getAttribute("user");
     }
 

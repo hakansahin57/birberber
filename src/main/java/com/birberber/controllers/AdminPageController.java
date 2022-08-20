@@ -1,7 +1,6 @@
 package com.birberber.controllers;
 
 import com.birberber.constants.Constants;
-import com.birberber.domain.address.Country;
 import com.birberber.forms.ImportForm;
 import com.birberber.repositories.CountryRepository;
 import com.birberber.services.imports.ExcelImportService;
@@ -39,8 +38,8 @@ public class AdminPageController {
 
     @PostMapping("/import")
     public String importFile(ImportForm importForm) {
-        List<Country> countryList = excelImportService.excelImport(importForm.getFile());
-        countryRepository.saveAll(countryList);
+        List<Object> a = excelImportService.excelImport(importForm.getFile());
+//        countryRepository.saveAll(a);
         return Constants.ADMIN_DATA_IMPEX;
     }
 

@@ -14,6 +14,7 @@ public class Item implements Serializable {
         if (Objects.isNull(getCreationTime())) {
             setCreationTime(new Date());
         }
+        setModifiedTime(new Date());
     }
 
     public Item(String name) {
@@ -27,7 +28,10 @@ public class Item implements Serializable {
     @Column(name = "name", length = 30)
     private String name;
 
+    @Column(updatable = false)
     private Date creationTime;
+
+    private Date modifiedTime;
 
 
     public Long getId() {
@@ -52,5 +56,13 @@ public class Item implements Serializable {
 
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public Date getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
     }
 }
