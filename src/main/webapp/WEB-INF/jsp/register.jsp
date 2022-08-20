@@ -60,24 +60,28 @@
                         <c:url value="/register" var="registerUrl" />
                         <form:form action="${registerUrl}" method="POST" modelAttribute="registerForm">
                             <div class="row g-3">
+
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="firstName" name="firstName" placeholder="First Name">
                                         <label for="firstName">First Name</label>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="lastName" name="lastName" placeholder="Last Name">
                                         <label for="lastName">Last Name</label>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="email" name="email" placeholder="Email">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <input type="password" class="form-control bg-transparent" id="password" name="password" placeholder="Password">
@@ -88,6 +92,7 @@
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Register</button>
                                 </div>
+
                             </div>
                         </form:form>
                     </div>

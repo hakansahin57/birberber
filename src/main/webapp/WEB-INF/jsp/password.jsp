@@ -49,34 +49,41 @@
 <%--    aaaaaaaaaa ${pageContext.request.remoteUser} <br>--%>
 <%--    bbbbbbbbbb ${errorMsg} <br>--%>
 <%--    cccccccccc ${msg} <br>--%>
-
+    
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
                     <div class="bg-secondary p-5">
-                        <p class="d-inline-block bg-dark text-primary py-1 px-4">Login</p>
-                        <c:url value="/login" var="loginUrl" />
-                        <form:form action="${loginUrl}" method="POST" modelAttribute="loginForm">
+                        <p class="d-inline-block bg-dark text-primary py-1 px-4">Register</p>
+                        <c:url value="/my-account/update-password" var="updatePasswordUrl" />
+                        <form:form action="${updatePasswordUrl}" method="POST" modelAttribute="updatePasswordForm">
                             <div class="row g-3">
 
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control bg-transparent" id="email" name="username" placeholder="Email">
-                                        <label for="email">Email</label>
+                                        <input type="password" class="form-control bg-transparent" id="currentPassword" name="currentPassword" placeholder="Current Password">
+                                        <label for="currentPassword">Current Password</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control bg-transparent" id="password" name="password" placeholder="Password">
-                                        <label for="email">Password</label>
+                                        <input type="password" class="form-control bg-transparent" id="newPassword" name="newPassword" placeholder="New Password">
+                                        <label for="newPassword">New Password</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Login</button>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control bg-transparent" id="newPasswordCheck" name="newPasswordCheck" placeholder="New Password Again">
+                                        <label for="newPasswordCheck">New Password Again</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Update Password</button>
                                 </div>
 
                             </div>

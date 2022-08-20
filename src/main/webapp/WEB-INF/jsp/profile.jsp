@@ -56,39 +56,46 @@
                         <c:url value="/my-account/update-profile" var="updateProfileUrl" />
                         <form:form action="${updateProfileUrl}" method="POST" modelAttribute="updateProfileForm">
                             <div class="row g-3">
+
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="name" name="firstName" placeholder="First Name" value="${updateProfileForm.firstName}">
                                         <label for="name">First Name</label>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="lastName" name="lastName" placeholder="Last Name" value="${updateProfileForm.lastName}">
                                         <label for="lastName">Last Name</label>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="email" name="email" placeholder="Email" value="${updateProfileForm.email}">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="phone" name="phoneNumber" placeholder="Phone Number" value="${updateProfileForm.phoneNumber}">
                                         <label for="phone">Phone Number</label>
                                     </div>
                                 </div>
+
 <%--                                <div class="col-12">--%>
 <%--                                    <div class="form-floating">--%>
 <%--                                        <input type="text" class="form-control bg-transparent" id="date" name="date" placeholder="date">--%>
 <%--                                        <label for="phone">Phone Number</label>--%>
 <%--                                    </div>--%>
 <%--                                </div>--%>
+
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Update Profile</button>
                                 </div>
+
                             </div>
                         </form:form>
                     </div>

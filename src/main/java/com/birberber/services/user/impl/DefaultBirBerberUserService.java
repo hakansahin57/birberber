@@ -3,6 +3,7 @@ package com.birberber.services.user.impl;
 
 import com.birberber.domain.user.User;
 import com.birberber.forms.RegisterForm;
+import com.birberber.forms.UpdatePasswordForm;
 import com.birberber.forms.UpdateProfileForm;
 import com.birberber.repositories.UserRepository;
 import com.birberber.security.BirBerberUserDetails;
@@ -41,6 +42,14 @@ public class DefaultBirBerberUserService implements BirBerberUserService {
         User user = userRepo.findByEmail(updateProfileForm.getEmail());
         setBasicFieldsOfUser(user, updateProfileForm);
         user.setPhoneNumber(updateProfileForm.getPhoneNumber());
+        userRepo.save(user);
+    }
+
+    @Override
+    public void updatePassword(User currentUser, UpdatePasswordForm updatePasswordForm) {
+        User user = userRepo.findByEmail(currentUser.getEmail());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(passwordEncoder.encode(updatePasswordForm.getNewPassword()));
         userRepo.save(user);
     }
 

@@ -9,6 +9,7 @@ public final class Constants {
     public static final String APPOINTMENTS_PAGE = "appointments";
     public static final String STORES_PAGE = "stores";
     public static final String PROFILE_PAGE = "profile";
+    public static final String PASSWORD_PAGE = "password";
 
     // Admin Pages
     public static final String ADMIN_PAGE = "/admin/admin";

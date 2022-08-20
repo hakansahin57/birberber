@@ -2,6 +2,7 @@ package com.birberber.controllers;
 
 import com.birberber.constants.Constants;
 import com.birberber.domain.user.User;
+import com.birberber.forms.UpdatePasswordForm;
 import com.birberber.forms.UpdateProfileForm;
 import com.birberber.services.session.SessionService;
 import com.birberber.services.user.BirBerberUserService;
@@ -41,6 +42,19 @@ public class AccountPageController {
     public String updateProfile(final UpdateProfileForm updateProfileForm) {
         birBerberUserService.updateUser(updateProfileForm);
         return Constants.PROFILE_PAGE;
+    }
+
+    @GetMapping("/password")
+    public String getPasswordPage(Model model) {
+        model.addAttribute(new UpdatePasswordForm());
+        return Constants.PASSWORD_PAGE;
+    }
+
+    @PostMapping("/update-password")
+    public String updatePassword(final UpdatePasswordForm updatePasswordForm, HttpServletRequest request) {
+        User currentUser = sessionService.getCurrentUser(request);
+        birBerberUserService.updatePassword(currentUser, updatePasswordForm);
+        return Constants.PASSWORD_PAGE;
     }
 
     private void setUserFieldsToProfileForm(User user, UpdateProfileForm updateProfileForm) {
