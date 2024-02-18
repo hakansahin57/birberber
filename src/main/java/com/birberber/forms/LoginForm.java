@@ -2,9 +2,9 @@ package com.birberber.forms;
 
 public class LoginForm {
 
-    String email;
-    String phoneNumber;
-    String password;
+    private String email;
+    private String phoneNumber;
+    private String password;
 
     public String getEmail() {
         return email;

@@ -21,8 +21,12 @@ public class LoginPageController {
     @GetMapping("/login")
     public String getLoginPage(Model model, String error, String logout) {
         model.addAttribute(new LoginForm());
-        if (error != null) model.addAttribute("errorMsg", "Your username and password are invalid.");
-        if (logout != null) model.addAttribute("msg", "You have been logged out successfully.");
+        if (error != null) {
+            model.addAttribute("errorMsg", "Your username and password are invalid.");
+        }
+        if (logout != null) {
+            model.addAttribute("msg", "You have been logged out successfully.");
+        }
         return Constants.LOGIN_PAGE;
     }
 

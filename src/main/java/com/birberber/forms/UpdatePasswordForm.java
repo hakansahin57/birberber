@@ -3,11 +3,8 @@ package com.birberber.forms;
 public class UpdatePasswordForm {
 
     private String currentPassword;
-
     private String newPassword;
-
     private String newPasswordCheck;
-
 
     public String getCurrentPassword() {
         return currentPassword;

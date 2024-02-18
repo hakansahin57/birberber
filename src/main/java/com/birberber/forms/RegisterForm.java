@@ -2,8 +2,8 @@ package com.birberber.forms;
 
 public class RegisterForm extends LoginForm {
 
-    String firstName;
-    String lastName;
+    private String firstName;
+    private String lastName;
 
     public String getFirstName() {
         return firstName;
