@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface BirBerberUserService extends UserDetailsService {
 
-    void register(final RegisterForm registerForm);
+    void register(RegisterForm registerForm);
 
     void updateUser(UpdateProfileForm updateProfileForm);
 
