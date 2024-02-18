@@ -55,7 +55,8 @@ public class AccountPageController {
     }
 
     @PostMapping("/update-password")
-    public String updatePassword(final UpdatePasswordForm updatePasswordForm, final BindingResult bindingResult, final HttpServletRequest request) {
+    public String updatePassword(final UpdatePasswordForm updatePasswordForm, final BindingResult bindingResult,
+          final HttpServletRequest request) {
         passwordValidator.validate(updatePasswordForm, bindingResult);
         if (!bindingResult.hasErrors()) {
             User currentUser = sessionService.getCurrentUser(request);

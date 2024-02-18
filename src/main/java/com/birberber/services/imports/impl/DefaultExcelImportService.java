@@ -31,12 +31,12 @@ public class DefaultExcelImportService implements ExcelImportService {
             workbook.close();
             return (List<T>) objectList;
 
-        } catch (IOException |
-                 ClassNotFoundException |
-                 InvocationTargetException |
-                 NoSuchMethodException |
-                 InstantiationException |
-                 IllegalAccessException e) {
+        } catch (IOException
+              | ClassNotFoundException
+              | InvocationTargetException
+              | NoSuchMethodException
+              | InstantiationException
+              | IllegalAccessException e) {
 
             throw new RuntimeException(e);
         }
@@ -51,7 +51,7 @@ public class DefaultExcelImportService implements ExcelImportService {
         List<Object> objectList = new ArrayList<>();
         // row 0 - column 0 is always name of the table
         // row 1 is for setter names, ex : setName
-        // thats why starts from row 2
+        // that's why starts from row 2
         for (int i = 2; i <= sheet.getLastRowNum(); i++) {
             Object obj = createInstance(clazz);
             for (int y = 0; y < sheet.getRow(i).getPhysicalNumberOfCells(); y++) {

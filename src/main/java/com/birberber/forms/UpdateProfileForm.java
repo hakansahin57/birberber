@@ -2,7 +2,7 @@ package com.birberber.forms;
 
 import java.util.Date;
 
-public class UpdateProfileForm extends RegisterForm{
+public class UpdateProfileForm extends RegisterForm {
 
     private Date birthDate;
 
