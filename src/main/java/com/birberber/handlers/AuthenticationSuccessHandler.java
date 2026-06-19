@@ -24,9 +24,9 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
           throws IOException, ServletException {
-        redirectStrategy.sendRedirect(request, response, "/");
-        clearAuthenticationAttributes(request);
         sessionService.setSessionUser(request, authentication);
+        clearAuthenticationAttributes(request);
+        redirectStrategy.sendRedirect(request, response, "/");
     }
 
 }

@@ -2,41 +2,32 @@ package com.birberber.controllers;
 
 import com.birberber.constants.Constants;
 import com.birberber.forms.LoginForm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 @Controller
 public class LoginPageController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LoginPageController.class);
+    private final MessageSource messageSource;
+
+    public LoginPageController(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @GetMapping("/login")
     public String getLoginPage(Model model, String error, String logout) {
         model.addAttribute(new LoginForm());
         if (error != null) {
-            model.addAttribute("errorMsg", "Your username and password are invalid.");
+            model.addAttribute("errorMsg",
+                    messageSource.getMessage("login.error.invalid", null, LocaleContextHolder.getLocale()));
         }
         if (logout != null) {
-            model.addAttribute("msg", "You have been logged out successfully.");
+            model.addAttribute("msg",
+                    messageSource.getMessage("login.success.logout", null, LocaleContextHolder.getLocale()));
         }
         return Constants.LOGIN_PAGE;
-    }
-
-    @GetMapping(value = "/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login?logout"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 }

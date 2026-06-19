@@ -14,6 +14,8 @@ public class ApplicationConfig {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename(Constants.MESSAGESOURCE_BASENAME);
         messageSource.setDefaultEncoding(Constants.DEFAULT_ENCODING);
+        messageSource.setFallbackToSystemLocale(false);
+        messageSource.setUseCodeAsDefaultMessage(false);
         return messageSource;
     }
 }

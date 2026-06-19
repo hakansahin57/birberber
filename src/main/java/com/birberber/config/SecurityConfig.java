@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -48,12 +49,16 @@ public class SecurityConfig {
                     antMatcher("/register"),
                     antMatcher("/login"),
                     antMatcher("/logout"),
+                    antMatcher("/stores"),
+                    antMatcher("/stores/**"),
+                    antMatcher("/api/stores/**"),
                     antMatcher("/ui/**"),
                     antMatcher("/webjars/**"),
                     antMatcher("/error")
                 ).permitAll()
-                .requestMatchers(antMatcher("/admin/**")).hasRole("ADMIN")
+                .requestMatchers(antMatcher("/admin"), antMatcher("/admin/**")).hasRole("ADMIN")
                 .requestMatchers(antMatcher("/my-account/**")).hasAnyRole("ADMIN", "USER")
+                .requestMatchers(antMatcher("/appointments/**")).hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -66,6 +71,7 @@ public class SecurityConfig {
                 .permitAll()
             )
             .logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()

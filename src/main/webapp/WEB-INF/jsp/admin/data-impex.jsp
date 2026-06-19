@@ -472,7 +472,7 @@
                     <div class="col-lg-6">
                         <div class="main-card mb-3 card">
                             <div class="card-body"><h5 class="card-title">...</h5>
-                                <c:url value="/import" var="importUrl" />
+                                <c:url value="/admin/import" var="importUrl" />
                                 <form:form action="${importUrl}" method="post" modelAttribute="importForm" enctype="multipart/form-data" >
                                     <div class="position-relative row form-group"><label for="exampleFile" class="col-sm-2 col-form-label">File</label>
                                         <div class="col-sm-10"><input name="file" id="exampleFile" type="file" class="form-control-file">

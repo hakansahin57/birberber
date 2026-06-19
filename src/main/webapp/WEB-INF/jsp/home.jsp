@@ -6,49 +6,60 @@
 <%@ taglib prefix="login" tagdir="/WEB-INF/tags/modal/login" %>
 
 
-<html lang="en">
+<html lang="${pageContext.response.locale.language}">
 
 <head>
     <title><spring:message code="text.homepage.title"/></title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="/ui//ui/img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="/ui/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/ui/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="/ui/style/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="/ui/style/style.css" rel="stylesheet">
+    <tags:links/>
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only"><spring:message code="text.loading"/></span>
+    <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only"><spring:message code="common.loading"/></span>
         </div>
     </div>
-    <!-- Spinner End -->
-
 
     <tags:navigation/>
+
+    <!-- Hero -->
+    <section class="bb-hero">
+        <div class="container position-relative">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <span class="bb-badge py-2 px-3 mb-3 d-inline-block"><spring:message code="home.hero.badge"/></span>
+                    <h1 class="mb-4"><spring:message code="home.hero.title"/></h1>
+                    <p class="mb-4"><spring:message code="home.hero.subtitle"/></p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="/stores" class="btn btn-primary btn-lg px-4"><spring:message code="home.hero.findBarber"/> <i class="fa fa-map-marker-alt ms-2"></i></a>
+                        <a href="/register" class="btn btn-outline-primary btn-lg px-4"><spring:message code="home.hero.freeRegister"/></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="bb-hero-visual">
+                        <div class="row g-3">
+                            <div class="col-4"><div class="bb-stat"><strong>8+</strong><span><spring:message code="home.stat.barbers"/></span></div></div>
+                            <div class="col-4"><div class="bb-stat"><strong>5km</strong><span><spring:message code="home.stat.radius"/></span></div></div>
+                            <div class="col-4"><div class="bb-stat"><strong>24/7</strong><span><spring:message code="home.stat.booking"/></span></div></div>
+                        </div>
+                        <hr class="my-4" style="border-color: var(--bb-border);">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center"
+                                 style="width:48px;height:48px;background:var(--bb-gradient);color:#fff;">
+                                <i class="fa fa-cut"></i>
+                            </div>
+                            <div>
+                                <strong>Canlı müsaitlik</strong>
+                                <p class="mb-0 text-muted small">Dolu ve boş saatleri anlık gör</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About Start -->
     <div class="container-xxl py-5">
@@ -57,14 +68,14 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="d-flex flex-column">
                         <img class="img-fluid w-75 align-self-end" src="/ui/img/about.jpg" alt="">
-                        <div class="w-50 bg-secondary p-5" style="margin-top: -25%;">
-                            <h1 class="text-uppercase text-primary mb-3">25 Years</h1>
-                            <h2 class="text-uppercase mb-0">Experience</h2>
+                        <div class="w-50 bb-panel p-5" style="margin-top: -25%;">
+                            <h1 class="text-primary mb-3" style="font-weight:800;">25 Yıl</h1>
+                            <h2 class="mb-0" style="font-weight:700;">Deneyim</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <p class="d-inline-block bg-secondary text-primary py-1 px-4">About Us</p>
+                    <p class="d-inline-block bb-badge py-1 px-4">Hakkımızda</p>
                     <h1 class="text-uppercase mb-4">More Than Just A Haircut. Learn More About Us!</h1>
                     <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
@@ -89,7 +100,7 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block bg-secondary text-primary py-1 px-4">Services</p>
+                <p class="d-inline-block bb-badge py-1 px-4">Hizmetler</p>
                 <h1 class="text-uppercase">What We Provide</h1>
             </div>
             <div class="row g-4">
@@ -379,7 +390,7 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-secondary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
@@ -430,7 +441,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="/"><spring:message code="app.name"/></a>, <spring:message code="home.footer.rights"/>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->

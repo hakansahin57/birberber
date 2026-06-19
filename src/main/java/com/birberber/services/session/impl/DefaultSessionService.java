@@ -5,6 +5,7 @@ import com.birberber.domain.user.User;
 import com.birberber.security.BirBerberUserDetails;
 import com.birberber.services.session.SessionService;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +15,21 @@ public class DefaultSessionService implements SessionService {
 
     @Override
     public User getCurrentUser(HttpServletRequest request) {
-        return (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            return user;
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null
+                || !authentication.isAuthenticated()
+                || !(authentication.getPrincipal() instanceof BirBerberUserDetails details)) {
+            return null;
+        }
+
+        user = details.getUser();
+        request.getSession().setAttribute("user", user);
+        return user;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Price extends Item {
 
     private double value;
 
-    @OneToOne
+    @OneToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "currency_id")
     private Currency currency;
 

@@ -3,6 +3,8 @@ package com.birberber.domain.store;
 import com.birberber.domain.item.Item;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,6 +16,10 @@ public class WorkingHour extends Item {
     private String openingHour;
 
     private String closingHour;
+
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private com.birberber.domain.store.Store store;
 
 
     public String getDay() {
@@ -38,5 +44,13 @@ public class WorkingHour extends Item {
 
     public void setClosingHour(String closingHour) {
         this.closingHour = closingHour;
+    }
+
+    public com.birberber.domain.store.Store getStore() {
+        return store;
+    }
+
+    public void setStore(com.birberber.domain.store.Store store) {
+        this.store = store;
     }
 }

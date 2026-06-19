@@ -36,6 +36,9 @@ public class AccountPageController {
     @GetMapping("/profile")
     public String getProfilePage(Model model, HttpServletRequest request) {
         User user = sessionService.getCurrentUser(request);
+        if (user == null) {
+            return "redirect:/login";
+        }
         UpdateProfileForm updateProfileForm = new UpdateProfileForm();
         setUserFieldsToProfileForm(user, updateProfileForm);
         model.addAttribute("updateProfileForm", updateProfileForm);
@@ -60,6 +63,9 @@ public class AccountPageController {
         passwordValidator.validate(updatePasswordForm, bindingResult);
         if (!bindingResult.hasErrors()) {
             User currentUser = sessionService.getCurrentUser(request);
+            if (currentUser == null) {
+                return "redirect:/login";
+            }
             birBerberUserService.updatePassword(currentUser, updatePasswordForm);
         }
         return Constants.PASSWORD_PAGE;
