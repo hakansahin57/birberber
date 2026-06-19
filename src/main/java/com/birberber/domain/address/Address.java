@@ -3,9 +3,9 @@ package com.birberber.domain.address;
 import com.birberber.domain.item.Item;
 import com.birberber.domain.store.Store;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address extends Item {

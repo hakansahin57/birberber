@@ -7,7 +7,7 @@ import com.birberber.services.session.SessionService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Component("sessionService")
 public class DefaultSessionService implements SessionService {

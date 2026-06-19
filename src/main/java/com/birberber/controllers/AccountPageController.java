@@ -7,7 +7,10 @@ import com.birberber.forms.UpdateProfileForm;
 import com.birberber.forms.validations.PasswordValidator;
 import com.birberber.services.session.SessionService;
 import com.birberber.services.user.BirBerberUserService;
-import org.apache.log4j.Logger;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,14 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 @RequestMapping(value = "/my-account")
 public class AccountPageController {
 
-    private static final Logger LOG = Logger.getLogger(AccountPageController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AccountPageController.class);
 
     @Resource
     private SessionService sessionService;

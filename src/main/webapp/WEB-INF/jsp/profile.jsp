@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags/" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html lang="en">
 
 <head>

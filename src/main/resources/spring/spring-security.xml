@@ -18,7 +18,7 @@
 <!--        </beans:property>-->
 <!--    </beans:bean>-->
 
-    <http auto-config="false" use-expressions="true">
+    <http>
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/register" access="permitAll()"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />

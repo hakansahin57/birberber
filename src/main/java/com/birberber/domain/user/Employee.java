@@ -2,7 +2,7 @@ package com.birberber.domain.user;
 
 import com.birberber.domain.store.Store;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "employee")

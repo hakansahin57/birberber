@@ -2,8 +2,8 @@ package com.birberber.domain.price;
 
 import com.birberber.domain.item.Item;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "currency")

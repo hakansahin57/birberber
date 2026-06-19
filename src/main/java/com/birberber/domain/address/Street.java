@@ -2,7 +2,7 @@ package com.birberber.domain.address;
 
 import com.birberber.domain.item.Item;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Street extends Item {

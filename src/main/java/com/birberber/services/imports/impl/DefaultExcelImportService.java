@@ -2,7 +2,8 @@ package com.birberber.services.imports.impl;
 
 import com.birberber.services.imports.ExcelImportService;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -18,7 +19,7 @@ import java.util.List;
 @Component("excelImportService")
 public class DefaultExcelImportService implements ExcelImportService {
 
-    private static final Logger LOG = Logger.getLogger(DefaultExcelImportService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultExcelImportService.class);
 
     public <T> List<T> excelImport(MultipartFile file) {
         FileInputStream inputStream;

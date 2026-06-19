@@ -2,7 +2,7 @@ package com.birberber.domain.user;
 
 import com.birberber.domain.item.Item;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity

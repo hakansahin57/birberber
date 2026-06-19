@@ -4,7 +4,7 @@ import com.birberber.domain.item.Item;
 import com.birberber.domain.address.Address;
 import com.birberber.domain.user.Employee;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
